@@ -42,26 +42,25 @@ const searchTerms = 'mexico';
 client.stream('statuses/filter', {track: searchTerms, language: 'en,es'}, function(stream) {
 
   stream.on('data', function(event) {
-		// Exclude tweets starting with "RT"
-   		if ((event.text != undefined) && (event.text.substring(0,2) != 'RT')) {
-        let row = {
-          id: event.id_str,
-          text: event.text,
-          created_at: event.timestamp_ms,
-          user_followers_count: (event.user.followers_count),
-          hashtags: JSON.stringify(event.entities.hashtags),
-          location: JSON.stringify(event.place)
-        };
-        console.log(row);
-        table.insert(row, function(error, insertErr, apiResp) {
-          if (error) {
-            console.log('err', error);
-          } else if (insertErr.length == 0) {
-            console.log('success!');
-          }
-        });
-   		}
-
+	  // Exclude tweets starting with "RT"
+ 		if ((event.text != undefined) && (event.text.substring(0,2) != 'RT')) {
+      let row = {
+        id: event.id_str,
+        text: event.text,
+        created_at: event.timestamp_ms,
+        user_followers_count: (event.user.followers_count),
+        hashtags: JSON.stringify(event.entities.hashtags),
+        location: JSON.stringify(event.place)
+      };
+      // console.log(row);
+      table.insert(row, function(error, insertErr, apiResp) {
+        if (error) {
+          console.log('err', error);
+        } else if (insertErr.length == 0) {
+          console.log('success!');
+        }
+      });
+ 		}
   });
 
   stream.on('error', function(error) {
