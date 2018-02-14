@@ -1,0 +1,101 @@
+{
+  "folders": [
+    {
+      "follow_symlinks": true,
+      "path": ".",
+      "file_exclude_patterns": [
+        "*.class",
+        "*.iml",
+        "*.log",
+        "*.min.js",
+        "*.bundle.js",
+        "*.bundle.js.map",
+        "*.pid",
+        "*.pyc",
+        "*.svg",
+        "*.tar.gz",
+        "*.tar",
+        "*.sublime-workspace",
+        ".DS_Store",
+        ".gemtags",
+        ".tags",
+        ".tags_sorted_by_file",
+        "style/lib/less/application.css",
+        "style/lib/less/tricons-base.less",
+        "test-framework/hadoop-stream-data-mapper-bundled.js",
+        "triconf/upgrade/test/*/*.json"
+      ],
+      "folder_exclude_patterns": [
+        ".cache",
+        ".git",
+        ".gradle",
+        ".idea",
+        ".settings",
+        ".vagrant",
+        "apps/diagnostic-server/build-eclipse/",
+        "apps/diagnostic-server/src/main/resources/static/css",
+        "apps/trifacta-client/cache",
+        "build",
+        "conf/archives",
+        "design/vendor",
+        "dist",
+        "logs",
+        "ml-service/test/resources",
+        "style/guide/src/lib",
+        "style/guide/template/public",
+        "style/lib/less/vendor",
+        "test-framework/jstest/utils/data-gen/generators/data",
+        "test/end-to-end/reports/html",
+        "trifacta/*/node_modules",
+        "vendor/bootstrap",
+        "venv",
+        "webapp/components",
+        "webapp/src/client/js/entrypoints",
+        "webapp/src/client/js/vendor"
+      ]
+    }
+  ],
+  "settings": {
+    "ensure_newline_at_eof_on_save": true,
+    "tab_size": 2,
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true
+  },
+  "SublimeLinter": {
+    "@python": 2,
+    "linters": {
+      "eslint": {
+        "@disable": false,
+        "args": [],
+        "excludes": []
+      },
+      "jshint": {
+        "@disable": true
+      },
+      "gjslint": {
+        "@disable": true
+      },
+      "puglint": {
+        "@disable": false,
+        "args": [],
+        "excludes": []
+      },
+      "json": {
+        "@disable": false,
+        "args": [],
+        "excludes": [],
+        "strict": true
+      },
+      "flake8": {
+        "@disable": false,
+        "args": [],
+        "max-line-length": 100,
+        "ignore": "E402",
+        "excludes": []
+      }
+    },
+    "syntax_map": {
+      "jade": "pug"
+    }
+  }
+}
