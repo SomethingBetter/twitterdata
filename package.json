@@ -13,5 +13,8 @@
     "google-cloud": "^0.47.0",
     "request": "^2.79.0",
     "twitter": "^1.7.0"
+  },
+  "scripts": {
+      "start": "node src/twitter.js"
   }
 }
