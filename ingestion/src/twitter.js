@@ -64,7 +64,8 @@ client.stream('statuses/filter', {track: searchTerms, language: 'en,es'}, functi
   });
 
   stream.on('error', function(error) {
-    throw error;
+    // keep going
+    console.error('error in the stream: ', error);
   });
 });
 
