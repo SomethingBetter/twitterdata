@@ -1,0 +1,3 @@
+tweepy
+google-cloud-bigquery
+ruamel.yaml
