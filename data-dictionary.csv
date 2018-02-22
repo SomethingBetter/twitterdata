@@ -1,0 +1,243 @@
+﻿Object,Attribute,Type,Description,Example,Source
+Tweet,created_at,String,UTC time when this Tweet was created. Example:,"""created_at"":""Wed Aug 27 13:08:45 +0000 2008""","Feb 22, 2018 2:48pm  https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/tweet-object"
+Tweet,id,Int64,"The integer representation of the unique identifier for this Tweet. This number is greater than 53 bits and some programming languages may have difficulty/silent defects in interpreting it. Using a signed 64 bit integer for storing this identifier is safe. Use id_str for fetching the identifier to stay on the safe side. See Twitter IDs, JSON and Snowflake . Example:","""id"":114749583439036416",
+Tweet,id_str,String,The string representation of the unique identifier for this Tweet. Implementations should use this rather than the large integer in id. Example:,"""id_str"":""114749583439036416""",
+Tweet,text,String,The actual UTF-8 text of the status update. See twitter-text for details on what characters are currently considered valid. Example:,"""text"":""Tweet Button, Follow Button, and Web Intents javascript now support SSL http://t.co/9fbA0oYy ^TS""",
+Tweet,source,String,"Utility used to post the Tweet, as an HTML-formatted string. Tweets from the Twitter website have a source value of web.","""source"":""Twitter for Mac""",
+Tweet,truncated,Boolean,"Indicates whether the value of the text parameter was truncated, for example, as a result of a retweet exceeding the original Tweet text length limit of 140 characters. Truncated text will end in ellipsis, like this ... Since Twitter now rejects long Tweets vs truncating them, the large majority of Tweets will have this set to false . Note that while native retweets may have their toplevel text property shortened, the original text will be available under the retweeted_status object and the truncated parameter will be set to the value of the original status (in most cases, false ). Example:","""truncated"":true",
+Tweet,in_reply_to_status_id,Int64,"Nullable. If the represented Tweet is a reply, this field will contain the integer representation of the original Tweet’s ID. Example:","""in_reply_to_status_id"":114749583439036416",
+Tweet,in_reply_to_status_id_str,String,"Nullable. If the represented Tweet is a reply, this field will contain the string representation of the original Tweet’s ID. Example:","""in_reply_to_status_id_str"":""114749583439036416""",
+Tweet,in_reply_to_user_id,Int64,"Nullable. If the represented Tweet is a reply, this field will contain the integer representation of the original Tweet’s author ID. This will not necessarily always be the user directly mentioned in the Tweet. Example:","""in_reply_to_user_id"":819797",
+Tweet,in_reply_to_user_id_str,String,"Nullable. If the represented Tweet is a reply, this field will contain the string representation of the original Tweet’s author ID. This will not necessarily always be the user directly mentioned in the Tweet. Example:","""in_reply_to_user_id_str"":""819797""",
+Tweet,in_reply_to_screen_name,String,"Nullable. If the represented Tweet is a reply, this field will contain the screen name of the original Tweet’s author. Example:","""in_reply_to_screen_name"":""twitterapi""",
+Tweet,user,User object,The user who posted this Tweet. See User data dictionary for complete list of attributes.,"Example highlighting select attributes:
+
+{
+  ""user"": {
+    ""id"": 2244994945,
+    ""id_str"": ""2244994945"",
+    ""name"": ""TwitterDev"",
+    ""screen_name"": ""TwitterDev"",
+    ""location"": ""Internet"",
+    ""url"": ""https://dev.twitter.com/"",
+    ""description"": ""Your official source for Twitter Platform news, updates & events. Need technical help? Visit https://twittercommunity.com/ ⌨️ #TapIntoTwitter"",
+    ""verified"": true,
+    ""followers_count"": 477684,
+    ""friends_count"": 1524,
+    ""listed_count"": 1184,
+    ""favourites_count"": 2151,
+    ""statuses_count"": 3121,
+    ""created_at"": ""Sat Dec 14 04:35:55 +0000 2013"",
+    ""utc_offset"": -25200,
+    ""time_zone"": ""Pacific Time (US & Canada)"",
+    ""geo_enabled"": true,
+    ""lang"": ""en"",
+    ""profile_image_url_https"": ""https://pbs.twimg.com/profile_images/530814764687949824/npQQVkq8_normal.png""
+  }
+}",
+Tweet,coordinates,Coordinates,"Nullable. Represents the geographic location of this Tweet as reported by the user or client application. The inner coordinates array is formatted as geoJSON (longitude first, then latitude). Example:","""coordinates"":
+{
+    ""coordinates"":
+    [
+        -75.14310264,
+40.05701649
+    ],
+    ""type"":""Point""
+}",
+Tweet,place,Places,"Nullable When present, indicates that the tweet is associated (but not necessarily originating from) a Place . Example:","""place"":
+{
+    ""attributes"":{},
+     ""bounding_box"":
+    {
+        ""coordinates"":
+        [[
+                [-77.119759,38.791645],
+                [-76.909393,38.791645],
+                [-76.909393,38.995548],
+                [-77.119759,38.995548]
+        ]],
+        ""type"":""Polygon""
+    },
+     ""country"":""United States"",
+     ""country_code"":""US"",
+     ""full_name"":""Washington, DC"",
+     ""id"":""01fbe706f872cb32"",
+     ""name"":""Washington"",
+     ""place_type"":""city"",
+     ""url"": ""http://api.twitter.com/1/geo/id/01fbe706f872cb32.json""
+}",
+Tweet,quoted_status_id,Int64,This field only surfaces when the Tweet is a quote Tweet. This field contains the integer value Tweet ID of the quoted Tweet. Example:,"""quoted_status_id"":114749583439036416",
+Tweet,quoted_status_id_str,String,This field only surfaces when the Tweet is a quote Tweet. This is the string representation Tweet ID of the quoted Tweet. Example:,"""quoted_status_id_str"":""114749583439036416""",
+Tweet,is_quote_status,Boolean,Indicates whether this is a Quoted Tweet. Example:,"""is_quote_status"":false",
+Tweet,quoted_status,Tweet,This field only surfaces when the Tweet is a quote Tweet. This attribute contains the Tweet object of the original Tweet that was quoted.,,
+Tweet,retweeted_status,Tweet,"Users can amplify the broadcast of Tweets authored by other users by retweeting . Retweets can be distinguished from typical Tweets by the existence of a retweeted_status attribute. This attribute contains a representation of the original Tweet that was retweeted. Note that retweets of retweets do not show representations of the intermediary retweet, but only the original Tweet. (Users can also unretweet a retweet they created by deleting their retweet.)",,
+Tweet,quote_count,Integer,Nullable. Indicates approximately how many times this Tweet has been quoted by Twitter users. Example:,"""quote_count"":1138",
+Tweet,reply_count,Int,Number of times this Tweet has been replied to. Example:,"""reply_count"":1585",
+Tweet,retweet_count,Int,Number of times this Tweet has been retweeted. Example:,"""retweet_count"":1585",
+Tweet,favorite_count,Integer,Nullable. Indicates approximately how many times this Tweet has been liked by Twitter users. Example:,"""favorite_count"":1138",
+Tweet,entities,Entities,Entities which have been parsed out of the text of the Tweet. Additionally see Entities in Twitter Objects . Example:,"""entities"":
+{
+    ""hashtags"":[],
+    ""urls"":[],
+    ""user_mentions"":[],
+    ""media"":[],
+    ""symbols"":[]
+    ""polls"":[]
+}",
+Tweet,extended_entities,Extended Entities,"When between one and four native photos or one video or one animated GIF are in Tweet, contains an array 'media' metadata. Additionally see Entities in Twitter Objects . Example:","""entities"":
+{
+    ""media"":[]
+}",
+Tweet,favorited,Boolean,Nullable. Indicates whether this Tweet has been liked by the authenticating user. Example:,"""favorited"":true",
+Tweet,retweeted,Boolean,Indicates whether this Tweet has been Retweeted by the authenticating user. Example:,"""retweeted"":false",
+Tweet,possibly_sensitive,Boolean,"Nullable. This field only surfaces when a Tweet contains a link. The meaning of the field doesn’t pertain to the Tweet content itself, but instead it is an indicator that the URL contained in the Tweet may contain content or media identified as sensitive content. Example:","""possibly_sensitive"":true",
+Tweet,filter_level,String,"Indicates the maximum value of the filter_level parameter which may be used and still stream this Tweet. So a value of medium will be streamed on none, low, and medium streams.","""filter_level"": ""medium""",
+Tweet,lang,String,"Nullable. When present, indicates a BCP 47 language identifier corresponding to the machine-detected language of the Tweet text, or und if no language could be detected. See more documentation HERE. Example:","""lang"": ""en""",
+Tweet,matching_rules,Array of Rule Objects,"Present in filtered products such as Twitter Search and PowerTrack. Provides the id and tag associated with the rule that matched the Tweet. With PowerTrack, more than one rule can match a Tweet. See more documentation HERE. Example:","""matching_rules"": "" [{
+        ""tag"": ""rain Tweets"",
+        ""id"": 831566737246023680,
+
+        ""id_str"": ""831566737246023680""
+
+    }, {
+        ""tag"": ""snow Tweet"",
+        ""id"": 831567402366218240,
+
+        ""id_str"": ""831567402366218240""    
+
+     }]""",
+Entities,hashtags,Array of Hashtag Objects,Represents hashtags which have been parsed out of the Tweet text. Example:,"{
+  ""hashtags"": [
+    {
+      ""indices"": [
+        32,
+38
+      ],
+      ""text"": ""nodejs""
+    }
+  ]
+}",
+Entities,media,Array of Media Objects,Represents media elements uploaded with the Tweet. Example:,"{
+  ""media"": [
+    {
+      ""type"": ""photo"",
+      ""sizes"": {
+        ""thumb"": {
+          ""h"": 150,
+          ""resize"": ""crop"",
+          ""w"": 150
+        },
+        ""large"": {
+          ""h"": 238,
+          ""resize"": ""fit"",
+          ""w"": 226
+        },
+        ""medium"": {
+          ""h"": 238,
+          ""resize"": ""fit"",
+          ""w"": 226
+        },
+        ""small"": {
+          ""h"": 238,
+          ""resize"": ""fit"",
+          ""w"": 226
+        }
+      },
+      ""indices"": [
+        15,
+35
+      ],
+      ""url"": ""http://t.co/rJC5Pxsu"",
+      ""media_url"": ""http://p.twimg.com/AZVLmp-CIAAbkyy.jpg"",
+      ""display_url"": ""pic.twitter.com/rJC5Pxsu"",
+      ""id"": 1.1408049304097e+17,
+      ""id_str"": ""114080493040967680"",
+      ""expanded_url"": ""http://twitter.com/yunorno/status/114080493036773378/photo/1"",
+      ""media_url_https"": ""https://p.twimg.com/AZVLmp-CIAAbkyy.jpg""
+    }
+  ]
+}",
+Entities,urls,Array of URL Objects,Represents URLs included in the text of a Tweet.,"Example (without Enhanced URLs enrichment enabled):
+
+{
+  ""urls"": [
+    {
+      ""indices"": [
+        32,
+52
+      ],
+      ""url"": ""http://t.co/IOwBrTZR"",
+      ""display_url"": ""youtube.com/watch?v=oHg5SJ…"",
+      ""expanded_url"": ""http://www.youtube.com/watch?v=oHg5SJYRHA0""
+    }
+  ]
+}
+
+Example (with Enhanced URLs enrichment enabled):
+
+{""urls"": [
+      {
+        ""url"": ""https://t.co/D0n7a53c2l"",
+        ""expanded_url"": ""http://bit.ly/18gECvy"",
+        ""display_url"": ""bit.ly/18gECvy"",
+        ""unwound"": {
+          ""url"": ""https://www.youtube.com/watch?v=oHg5SJYRHA0"",
+          ""status"": 200,
+          ""title"": ""RickRoll'D"",
+          ""description"": ""http://www.facebook.com/rickroll548 As long as trolls are still trolling, the Rick will never stop rolling.""
+        },
+        ""indices"": [
+          62,
+85
+        ]
+      }
+    ]
+}",
+Entities,user_mentions,Array of User Mention Objects,Represents other Twitter users mentioned in the text of the Tweet. Example:,"{
+  ""user_mentions"": [
+    {
+      ""name"": ""Twitter API"",
+      ""indices"": [
+        4,
+15
+      ],
+      ""screen_name"": ""twitterapi"",
+      ""id"": 6253282,
+      ""id_str"": ""6253282""
+    }
+  ]
+}",
+Entities,symbols,Array of Symbol Objects,"Represents symbols, i.e. $cashtags, included in the text of the Tweet. Example:","{
+  ""symbols"": [
+    {
+      ""indices"": [
+        12,
+17
+      ],
+      ""text"": ""twtr""
+    }
+  ]
+}",
+Entities,polls,Array of Poll Objects,Represents Twitter Polls included in the Tweet. Example:,"{""polls"": [
+      {
+        ""options"": [
+          {
+            ""position"": 1,
+            ""text"": ""I read documentation once.""
+          },
+          {
+            ""position"": 2,
+            ""text"": ""I read documentation twice.""
+          },
+          {
+            ""position"": 3,
+            ""text"": ""I read documentation over and over again.""
+          }
+        ],
+        ""end_datetime"": ""Thu May 25 22:20:27 +0000 2017"",
+        ""duration_minutes"": 60
+      }
+    ]
+  }",
+Hashtags,indices,Array of Int,An array of integers indicating the offsets within the Tweet text where the hashtag begins and ends. The first integer represents the location of the # character in the Tweet text string. The second integer represents the location of the first character after the hashtag. Therefore the difference between the two numbers will be the length of the hashtag name plus one (for the ‘#’ character). Example:,"""indices"":[32,38]",
+Hashtags,text,String,"Name of the hashtag, minus the leading ‘#’ character. Example:","""text"":""nodejs""",
